@@ -7,18 +7,9 @@ import Acceso from './pantallas/Acceso.jsx';
 import Listado from './pantallas/Listado.jsx';
 import Reportar from './pantallas/Reportar.jsx';
 import Detalle from './pantallas/Detalle.jsx';
+import Indicadores from './pantallas/Indicadores.jsx';
 import { Marco } from './componentes/Marco.jsx';
 import { Aviso } from './componentes/ui.jsx';
-
-function Pendiente({ nombre }) {
-  return (
-    <Marco actual="inicio">
-      <Aviso tipo="info" titulo={nombre}>
-        Pantalla en construcción.
-      </Aviso>
-    </Marco>
-  );
-}
 
 function SinPermiso() {
   return (
@@ -50,8 +41,8 @@ export default function App() {
     case 'incidencia':
       return <Detalle />;
     case 'indicadores':
-      return puede(yo, 'ver_metricas') ? <Pendiente nombre="Indicadores" /> : <SinPermiso />;
+      return puede(yo, 'ver_metricas') ? <Indicadores /> : <SinPermiso />;
     default:
-      return yo.rol === 'direccion' ? <Pendiente nombre="Indicadores" /> : <Listado />;
+      return yo.rol === 'direccion' ? <Indicadores /> : <Listado />;
   }
 }
