@@ -13,6 +13,14 @@ Práctica 3 de Ingeniería de Software: proceso tradicional, diagrama de Gantt y
 
 > Es una **demostración parcial** de la fase de Elaboración. No es el sistema completo, no tiene servidor ni seguridad real y no está validado para uso en producción.
 
+## Probar sin instalar nada
+
+1. Descarga el repositorio (**Code → Download ZIP**) y extrae el ZIP.
+2. Entra a la carpeta [`Descarga/`](Descarga) y da doble clic en **`Abrir CAMPUSFIX.bat`** (Windows). En otros sistemas abre `Descarga/CAMPUSFIX/CAMPUSFIX.html` con Chrome, Edge o Firefox.
+3. Elige una cuenta de demostración y sigue el recorrido de [`Descarga/CAMPUSFIX/LEEME.txt`](Descarga/CAMPUSFIX/LEEME.txt).
+
+`CAMPUSFIX.html` es la aplicación completa en un solo archivo (`npm run descarga` la vuelve a generar). La carpeta también trae el documento de la práctica en DOCX y PDF.
+
 ## Funcionalidades
 
 Cinco pantallas con navegación real y permisos por rol:
@@ -56,11 +64,11 @@ La demostración arranca el 23 oct 2026 a las 09:38 (reloj simulado). El botón 
 - Estado en memoria con persistencia en `localStorage`; sin backend.
 - Pruebas de dominio con el ejecutor nativo de Node (`node --test`).
 
-```
-
 ## Estructura
 
 ```text
+Descarga/        Abrir CAMPUSFIX.bat + carpeta CAMPUSFIX/ (aplicación en un archivo, documento y LEEME)
+scripts/         empaquetar.mjs: junta la compilación en un solo HTML
 src/
   dominio/       Reglas de negocio por componente del DAS (COMP-01 a COMP-08)
   datos/         Datos ficticios iniciales tomados del prototipo de Figma

@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node --test \"pruebas/*.test.js\""
+    "test": "node --test \"pruebas/*.test.js\"",
+    "descarga": "vite build && node scripts/empaquetar.mjs"
   },
   "dependencies": {
     "react": "^19.3.1",

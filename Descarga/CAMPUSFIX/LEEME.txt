@@ -1,0 +1,75 @@
+CAMPUSFIX · Prototipo funcional (Práctica 3, Equipo02)
+=====================================================
+
+Prototipo de demostración del sistema de reporte y atención de incidencias de
+infraestructura de la Universidad Metropolitana del Centro (institución ficticia).
+Todos los datos son ficticios. No es el sistema completo: no tiene servidor, base de
+datos, directorio institucional ni envío de correo.
+
+
+1. CÓMO ABRIRLO
+---------------
+Windows: doble clic en "Abrir CAMPUSFIX.bat" (está junto a esta carpeta).
+Otros sistemas: abrir el archivo CAMPUSFIX\CAMPUSFIX.html con Chrome, Edge o Firefox.
+
+No hace falta instalar nada. Con internet se ven las fuentes Public Sans e IBM Plex
+Mono; sin internet la aplicación funciona igual con la fuente del sistema.
+
+Si se descargó desde GitHub como ZIP, primero hay que extraer el ZIP; el archivo .bat
+no funciona dentro del ZIP sin extraer.
+
+
+2. CÓMO PROBARLO
+----------------
+En la pantalla de acceso se elige una cuenta en "Acceso rápido de demostración"
+(o se escribe su correo con cualquier contraseña no vacía; no se guarda).
+
+  Persona          Rol                       Para probar
+  Lucía Méndez     Reportante                FLU-01: reportar una falla y seguirla
+  Diego Ramírez    Reportante                Reporte duplicado (CF-20261023-0048)
+  Ana Salas        Mesa de servicio          FLU-02: validar, duplicado, asignar
+  Javier Torres    Técnico (Plomería)        FLU-03: diagnóstico, espera, resolución
+  Elena Ruiz       Supervisor                FLU-03: validar el cierre o reasignar
+  Daniel Ortega    Dirección administrativa  Indicadores y exportación CSV
+
+Recorrido sugerido (unos 5 minutos):
+
+  a) Lucía Méndez > "Reportar incidencia". Dejar un campo vacío y pulsar
+     "Continuar" para ver el error; completar los cuatro pasos (la foto es
+     opcional) y enviar: aparece el folio CF-20261023-0049.
+
+  b) Salir > Ana Salas. En la bandeja abrir CF-20261023-0042 > "Iniciar revisión"
+     > "Guardar clasificación" > escribir el motivo y "Vincular 0048 como
+     duplicado de 0042" > elegir a Javier Torres > "Asignar incidencia".
+
+  c) Salir > Javier Torres. Abrir 0042 > llenar el diagnóstico y guardarlo >
+     "Poner en espera de refacción" > "Reanudar atención" > intentar "Registrar
+     resolución" sin foto ni motivo (aparece el error) > escribir un motivo o
+     adjuntar una foto y registrar.
+
+  d) Salir > Elena Ruiz. Abrir 0042, marcar los tres criterios, escribir el
+     resultado y "Validar y cerrar incidencia".
+
+  e) Salir > Lucía Méndez: ver los avisos y la opción de reapertura.
+     Salir > Daniel Ortega: ver los indicadores y descargar el CSV.
+
+El botón "Reiniciar demo" del menú lateral regresa los datos al inicio. Los datos se
+guardan en el navegador de cada computadora. El reloj de la demostración empieza el
+23 oct 2026 a las 09:38.
+
+
+3. CONTENIDO
+------------
+  CAMPUSFIX.html   La aplicación completa en un solo archivo.
+  Documento\       Documento de la práctica en DOCX y PDF.
+  LEEME.txt        Este archivo.
+
+Código fuente, pruebas y evidencias de IA:
+https://github.com/SamuelCFlores/Equipo02_CAMPUSFIX_Practica3
+
+Para trabajar con el código (requiere Node.js 20.19 o superior), en la carpeta del
+repositorio:
+  npm install
+  npm run dev        (abre la aplicación en modo desarrollo)
+  npm test           (15 pruebas de las reglas de negocio)
+  npm run descarga   (vuelve a generar CAMPUSFIX.html)
