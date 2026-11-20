@@ -5,3 +5,7 @@ dist/
 Thumbs.db
 .vite/
 .claude/
+# En GitHub solo va el prototipo: el documento de la práctica se entrega por separado
+Descarga/CAMPUSFIX/Documento/
+*.docx
+*.pdf

@@ -16,7 +16,7 @@ Práctica 3 de Ingeniería de Software: proceso tradicional, diagrama de Gantt y
 ## Probar el prototipo
 1. Descarga el repositorio (**Code → Download ZIP**) y extrae el ZIP.
 2. Entra a la carpeta [`Descarga/`](Descarga) y da doble clic en **`Abrir CAMPUSFIX.bat`** (Windows). En otros sistemas abre `Descarga/CAMPUSFIX/CAMPUSFIX.html` con Chrome, Edge o Firefox.
-3. Elige una cuenta de demostración y sigue el recorrido de [`Descarga/CAMPUSFIX/LEEME.txt`](Descarga/CAMPUSFIX/LEEME.txt).
+3. Elige una de las [cuentas de demostración](#cuentas-de-demostración).
 
 ## Funcionalidades
 
@@ -64,7 +64,7 @@ La demostración arranca el 23 oct 2026 a las 09:38 (reloj simulado). El botón 
 ## Estructura
 
 ```text
-Descarga/        Abrir CAMPUSFIX.bat + carpeta CAMPUSFIX/ (aplicación en un archivo, documento y LEEME)
+Descarga/        Abrir CAMPUSFIX.bat + CAMPUSFIX/CAMPUSFIX.html (aplicación en un archivo) e instrucciones de descarga
 scripts/         empaquetar.mjs: junta la compilación en un solo HTML
 src/
   dominio/       Reglas de negocio por componente del DAS (COMP-01 a COMP-08)
