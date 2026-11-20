@@ -8,7 +8,7 @@ Práctica 3 de Ingeniería de Software: proceso tradicional, diagrama de Gantt y
 |---|---|
 | Caso maestro | CAMPUSFIX |
 | Equipo | Equipo02 |
-| Integrante | Samuel de María Cabrera Flores (por ahora, trabajo individual) |
+| Integrante | Samuel de María Cabrera Flores |
 | Versión | 0.1.0 · 19 de noviembre de 2026 |
 
 > Es una **demostración parcial** de la fase de Elaboración. No es el sistema completo, no tiene servidor ni seguridad real y no está validado para uso en producción.
