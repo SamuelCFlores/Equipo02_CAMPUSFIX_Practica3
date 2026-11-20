@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDatos } from './estado/almacen.jsx';
 import { useRuta, ir } from './estado/rutas.js';
 import Acceso from './pantallas/Acceso.jsx';
+import Listado from './pantallas/Listado.jsx';
 import { Marco } from './componentes/Marco.jsx';
 import { Aviso } from './componentes/ui.jsx';
 
@@ -38,6 +39,6 @@ export default function App() {
     case 'indicadores':
       return <Pendiente nombre="Indicadores" />;
     default:
-      return <Pendiente nombre="Listado" />;
+      return yo.rol === 'direccion' ? <Pendiente nombre="Indicadores" /> : <Listado />;
   }
 }
