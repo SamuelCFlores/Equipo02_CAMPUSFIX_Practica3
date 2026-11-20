@@ -10,6 +10,9 @@ import { FORMATO_FOLIO } from '../dominio/folio.js';
 import { fechaLarga } from '../dominio/reloj.js';
 import { Informacion, Vinculados, Cronologia, NotasInternas, BitacoraFolio, nombre } from './detalle/comunes.jsx';
 import PanelMesa from './detalle/PanelMesa.jsx';
+import PanelTecnico from './detalle/PanelTecnico.jsx';
+import PanelSupervisor from './detalle/PanelSupervisor.jsx';
+import PanelReportante from './detalle/PanelReportante.jsx';
 
 const MIGA = { reportante: 'Mis incidencias', mesa: 'Bandeja de la mesa', tecnico: 'Mi tablero', supervisor: 'Validaciones y cierre', direccion: 'Indicadores' };
 
@@ -40,7 +43,14 @@ function NoEncontrado({ folio }) {
 function PanelRol({ inc }) {
   const { yo } = useDatos();
   if (yo.rol === 'mesa') return <PanelMesa inc={inc} />;
-  return null;
+  if (yo.rol === 'tecnico') return <PanelTecnico inc={inc} />;
+  if (yo.rol === 'supervisor') return <PanelSupervisor inc={inc} />;
+  if (yo.rol === 'reportante') return <PanelReportante inc={inc} />;
+  return (
+    <Aviso tipo="info" titulo="Vista de solo consulta">
+      La Dirección administrativa consulta el avance sin acciones de asignación.
+    </Aviso>
+  );
 }
 
 export default function Detalle() {
