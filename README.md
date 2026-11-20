@@ -13,7 +13,7 @@ Práctica 3 de Ingeniería de Software: proceso tradicional, diagrama de Gantt y
 
 > Es una **demostración parcial** de la fase de Elaboración. No es el sistema completo, no tiene servidor ni seguridad real y no está validado para uso en producción.
 
-## Qué hace
+## Funcionalidades
 
 Cinco pantallas con navegación real y permisos por rol:
 
@@ -39,8 +39,6 @@ Recorridos completos del DAS: **FLU-01** (reportar), **FLU-02** (validar, vincul
 
 ### Cuentas de demostración
 
-Cualquier contraseña no vacía funciona y no se guarda. También se puede entrar con un clic desde la pantalla de acceso.
-
 | Persona | Rol | Para probar |
 |---|---|---|
 | Lucía Méndez | Reportante | FLU-01 y reapertura |
@@ -58,15 +56,6 @@ La demostración arranca el 23 oct 2026 a las 09:38 (reloj simulado). El botón 
 - Estado en memoria con persistencia en `localStorage`; sin backend.
 - Pruebas de dominio con el ejecutor nativo de Node (`node --test`).
 
-## Ejecutar en local
-
-Requiere Node.js 20.19 o superior.
-
-```bash
-npm install
-npm run dev        # abre http://localhost:5173
-npm test           # 15 pruebas de las reglas de dominio
-npm run build      # genera dist/, que se puede servir desde cualquier carpeta
 ```
 
 ## Estructura
