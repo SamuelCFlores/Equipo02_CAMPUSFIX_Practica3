@@ -26,9 +26,25 @@ const VACIO = {
 };
 const TITULO_ERROR = { 1: 'Revisa la ubicación para continuar', 2: 'Revisa la descripción para continuar', 4: 'Falta tu confirmación' };
 
-function Lateral({ yo }) {
+function Lateral({ yo, foto, paso }) {
   return (
     <aside className="lateral" style={{ flex: '1 1 280px' }}>
+      {paso === 4 && foto && (
+        <div className="tarjeta">
+          <h2 style={{ fontSize: 18 }}>Fotografía adjunta</h2>
+          <div className="foto con-imagen">
+            <img src={foto.miniatura} alt={`Fotografía adjunta: ${foto.nombre}`} />
+          </div>
+          <div className="archivo">
+            <Icono nombre="foto" />
+            <span>
+              <b>{foto.nombre}</b>
+              <br />
+              {describirFoto(foto)} · Carga completa
+            </span>
+          </div>
+        </div>
+      )}
       <div className="tarjeta">
         <h2 style={{ fontSize: 18 }}>Tu reporte</h2>
         <Dato etiqueta="Reportante">{yo.nombre}</Dato>
@@ -371,7 +387,7 @@ export default function Reportar() {
             </div>
           </form>
         </div>
-        <Lateral yo={yo} />
+        <Lateral yo={yo} foto={d.foto} paso={paso} />
       </div>
     </Marco>
   );

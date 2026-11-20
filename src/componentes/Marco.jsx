@@ -157,7 +157,7 @@ export function Marco({ actual, children }) {
                 ir('inicio');
               }}
             >
-              Reiniciar demostración
+              Reiniciar demo
             </button>
             <span>Campus Centro · UMC</span>
             <span>Datos ficticios. Prototipo sin servidor.</span>
