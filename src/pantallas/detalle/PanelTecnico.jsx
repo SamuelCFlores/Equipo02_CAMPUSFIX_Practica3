@@ -2,7 +2,8 @@
 // RF-015, RN-005). PAN-07: error si se intenta resolver sin foto ni motivo.
 import { useState } from 'react';
 import { useDatos, useAccion } from '../../estado/almacen.jsx';
-import { diagnosticar, ponerEnEspera, reanudar, resolver } from '../../dominio/incidencias.js';
+import { diagnosticar, corregirCategoria, ponerEnEspera, reanudar, resolver } from '../../dominio/incidencias.js';
+import { CATEGORIAS } from '../../dominio/catalogos.js';
 import { describirFoto } from '../../dominio/evidencias.js';
 import { fechaCorta } from '../../dominio/reloj.js';
 import { leerFoto } from '../../componentes/foto.js';
@@ -65,6 +66,36 @@ function Espera({ inc }) {
         </button>
       </div>
     </section>
+  );
+}
+
+function Recategorizar({ inc }) {
+  const { correr, errores } = useAccion();
+  const [categoria, setCategoria] = useState('');
+  const [motivo, setMotivo] = useState('');
+  return (
+    <details className="tarjeta">
+      <summary style={{ cursor: 'pointer', fontWeight: 700, color: 'var(--marino)', fontSize: 18 }}>¿El origen es distinto? Corregir categoría</summary>
+      <p className="tenue">Categoría actual: {inc.categoria}. La prioridad confirmada por la Mesa no cambia (RN-010).</p>
+      <div className="rejilla-campos">
+        <Campo id="t-cat" etiqueta="Nueva categoría" requerido error={errores.categoriaNueva}>
+          <select {...aria('t-cat', errores.categoriaNueva)} value={categoria} onChange={(e) => setCategoria(e.target.value)}>
+            <option value="">Selecciona…</option>
+            {CATEGORIAS.filter((c) => c.nombre !== inc.categoria).map((c) => (
+              <option key={c.nombre}>{c.nombre}</option>
+            ))}
+          </select>
+        </Campo>
+        <Campo id="t-catmot" etiqueta="Qué reveló el diagnóstico" requerido error={errores.motivoCategoria}>
+          <input {...aria('t-catmot', errores.motivoCategoria)} value={motivo} onChange={(e) => setMotivo(e.target.value)} />
+        </Campo>
+      </div>
+      <div className="acciones derecha">
+        <button type="button" className="btn btn-secundario" onClick={() => correr(corregirCategoria, [inc.folio, categoria, motivo], 'Categoría corregida y registrada en la bitácora.')}>
+          Corregir categoría
+        </button>
+      </div>
+    </details>
   );
 }
 
@@ -170,6 +201,7 @@ export default function PanelTecnico({ inc }) {
         <Resolucion inc={inc} />
         <Espera inc={inc} />
         <Diagnostico inc={inc} />
+        <Recategorizar inc={inc} />
       </>
     );
   }

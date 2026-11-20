@@ -33,7 +33,7 @@ export function iniciales(nombre) {
 const PERMISOS = {
   reportante: ['reportar', 'ver_propias', 'solicitar_reapertura'],
   mesa: ['ver_todas', 'validar', 'clasificar', 'vincular_duplicado', 'asignar', 'aceptar_reapertura', 'nota_interna', 'ver_internos'],
-  tecnico: ['ver_asignadas', 'diagnosticar', 'poner_en_espera', 'reanudar', 'resolver', 'nota_interna', 'ver_internos'],
+  tecnico: ['ver_asignadas', 'diagnosticar', 'recategorizar', 'poner_en_espera', 'reanudar', 'resolver', 'nota_interna', 'ver_internos'],
   supervisor: ['ver_todas', 'validar_cierre', 'devolver', 'reasignar', 'nota_interna', 'ver_internos'],
   direccion: ['ver_metricas', 'exportar'],
 };

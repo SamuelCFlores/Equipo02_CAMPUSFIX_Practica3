@@ -209,3 +209,17 @@ test('CU-08: indicadores sin duplicados y exportación CSV', () => {
   assert.ok(!csv.includes('CF-20261023-0048'));
   assert.ok(!csv.includes('lucia'));
 });
+
+test('RN-010: el técnico corrige la categoría después del diagnóstico', () => {
+  const base = asignada();
+  const f = 'CF-20261023-0042';
+  const javier = U('javier');
+  assert.throws(() => inc.corregirCategoria(base, javier, f, 'Albañilería', 'Fisura en el muro', T('2026-10-23 10:00')), ErrorPermiso);
+  inc.diagnosticar(base, javier, f, { diagnostico: 'Fisura en el muro detrás del lavabo.', acciones: 'Se cerró la llave.', tiempoEstimado: '2 días' }, T('2026-10-23 10:05'));
+  assert.throws(() => inc.corregirCategoria(base, javier, f, 'Albañilería', '', T('2026-10-23 10:10')), ErrorValidacion);
+  assert.throws(() => inc.corregirCategoria(base, U('ana'), f, 'Albañilería', 'x', T('2026-10-23 10:10')), ErrorPermiso);
+  inc.corregirCategoria(base, javier, f, 'Albañilería', 'La fuga viene de una fisura en el muro.', T('2026-10-23 10:10'));
+  assert.equal(base.incidencias[f].categoria, 'Albañilería');
+  assert.equal(base.incidencias[f].prioridad, 'Alta');
+  assert.ok(base.bitacora.at(-1).accion.includes('RN-010'));
+});

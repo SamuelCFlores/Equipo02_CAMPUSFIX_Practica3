@@ -232,6 +232,28 @@ export function diagnosticar(base, u, folio, d, ahora) {
   }
 }
 
+/**
+ * RN-010: después del diagnóstico, el técnico asignado puede corregir la categoría si el origen de la
+ * falla es distinto al reportado. La prioridad confirmada por la Mesa no cambia.
+ */
+export function corregirCategoria(base, u, folio, nombreCategoria, motivo, ahora) {
+  exigir(u, 'recategorizar');
+  const inc = obtener(base, folio);
+  exigirAsignado(u, inc);
+  if (!inc.diagnostico || !['En progreso', 'En espera de refacción'].includes(inc.estado)) {
+    throw new ErrorPermiso('La categoría se corrige después de registrar el diagnóstico.');
+  }
+  const cat = categoria(nombreCategoria);
+  const e = {};
+  if (!cat) e.categoriaNueva = 'Selecciona una categoría del catálogo.';
+  else if (cat.nombre === inc.categoria) e.categoriaNueva = 'Selecciona una categoría distinta a la actual.';
+  if (sinTexto(motivo)) e.motivoCategoria = 'Explica qué reveló el diagnóstico.';
+  revisar(e);
+  const anterior = inc.categoria;
+  Object.assign(inc, { categoria: cat.nombre, area: cat.area, actualizada: ahora });
+  emitir(base, { tipo: 'recategorizacion', folio, usuario: u.id, fecha: ahora, detalle: `${anterior} → ${cat.nombre}: ${motivo.trim()}` });
+}
+
 /** Pausa por falta de refacción con justificación obligatoria (RF-012). */
 export function ponerEnEspera(base, u, folio, justificacion, ahora) {
   exigir(u, 'poner_en_espera');

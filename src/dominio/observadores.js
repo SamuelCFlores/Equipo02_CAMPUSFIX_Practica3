@@ -51,6 +51,7 @@ const ACCIONES = {
   vinculo: 'Vinculó un duplicado',
   nota: 'Agregó una nota interna',
   diagnostico: 'Actualizó el diagnóstico',
+  recategorizacion: 'Corrigió la categoría (RN-010)',
   reapertura_solicitada: 'Solicitó la reapertura',
 };
 
