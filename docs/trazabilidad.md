@@ -2,6 +2,10 @@
 
 Relación entre los elementos del DAS/SDD v1.0 de CAMPUSFIX y lo que realmente existe en este prototipo. «Simulado» significa que la función se ve y se puede usar en la demostración, pero sin la infraestructura real del DAS.
 
+![Trazabilidad de componentes](figuras/trazabilidad-componentes.png)
+
+![Trazabilidad de pantallas](figuras/trazabilidad-pantallas.png)
+
 ## Componentes (DAS, Tabla 18)
 
 | Componente del DAS | Implementación en el prototipo | Estado |

@@ -84,7 +84,16 @@ docs/
   trazabilidad.md  Componentes y pantallas del DAS → archivos, con pendientes
   ia/              Prompts, iteraciones y reflexión sobre el uso de IA
   capturas/        Diseño (D1–D5), prototipo (P01–P12) e iteración (I1)
+  figuras/         Gantt, trazabilidad y despliegue actualizado (PNG y .drawio)
 ```
+
+## Proceso y plan
+
+El proyecto sigue **RUP adaptado con un ciclo de prototipado en Elaboración**. Este prototipo corresponde a la segunda iteración de Elaboración (hito LCA): es un piloto del frontend, no la fase de Construcción.
+
+![Diagrama de Gantt del proyecto](docs/figuras/gantt.png)
+
+El despliegue actual y el pendiente están en [`docs/figuras/despliegue-actualizado.png`](docs/figuras/despliegue-actualizado.png).
 
 ## Uso de inteligencia artificial
 
