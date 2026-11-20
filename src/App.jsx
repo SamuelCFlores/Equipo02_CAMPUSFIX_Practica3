@@ -2,8 +2,10 @@
 import { useEffect } from 'react';
 import { useDatos } from './estado/almacen.jsx';
 import { useRuta, ir } from './estado/rutas.js';
+import { puede } from './dominio/accesos.js';
 import Acceso from './pantallas/Acceso.jsx';
 import Listado from './pantallas/Listado.jsx';
+import Reportar from './pantallas/Reportar.jsx';
 import { Marco } from './componentes/Marco.jsx';
 import { Aviso } from './componentes/ui.jsx';
 
@@ -12,6 +14,16 @@ function Pendiente({ nombre }) {
     <Marco actual="inicio">
       <Aviso tipo="info" titulo={nombre}>
         Pantalla en construcción.
+      </Aviso>
+    </Marco>
+  );
+}
+
+function SinPermiso() {
+  return (
+    <Marco actual="">
+      <Aviso tipo="alerta" titulo="Esta sección no está disponible para tu rol">
+        Regresa a <a href="#/inicio">tu pantalla de inicio</a>.
       </Aviso>
     </Marco>
   );
@@ -33,11 +45,11 @@ export default function App() {
 
   switch (ruta.pantalla) {
     case 'reportar':
-      return <Pendiente nombre="Reportar incidencia" />;
+      return puede(yo, 'reportar') ? <Reportar /> : <SinPermiso />;
     case 'incidencia':
       return <Pendiente nombre="Detalle de incidencia" />;
     case 'indicadores':
-      return <Pendiente nombre="Indicadores" />;
+      return puede(yo, 'ver_metricas') ? <Pendiente nombre="Indicadores" /> : <SinPermiso />;
     default:
       return yo.rol === 'direccion' ? <Pendiente nombre="Indicadores" /> : <Listado />;
   }
