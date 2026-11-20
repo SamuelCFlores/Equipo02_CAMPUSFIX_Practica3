@@ -1,0 +1,21 @@
+{
+  "name": "campusfix-prototipo",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Prototipo frontend de CAMPUSFIX: reporte y atención de incidencias de infraestructura (Práctica 3, Ingeniería de Software).",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test pruebas/"
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.3.0",
+    "vite": "^8.3.8"
+  }
+}
