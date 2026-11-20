@@ -6,6 +6,7 @@ import { puede } from './dominio/accesos.js';
 import Acceso from './pantallas/Acceso.jsx';
 import Listado from './pantallas/Listado.jsx';
 import Reportar from './pantallas/Reportar.jsx';
+import Detalle from './pantallas/Detalle.jsx';
 import { Marco } from './componentes/Marco.jsx';
 import { Aviso } from './componentes/ui.jsx';
 
@@ -47,7 +48,7 @@ export default function App() {
     case 'reportar':
       return puede(yo, 'reportar') ? <Reportar /> : <SinPermiso />;
     case 'incidencia':
-      return <Pendiente nombre="Detalle de incidencia" />;
+      return <Detalle />;
     case 'indicadores':
       return puede(yo, 'ver_metricas') ? <Pendiente nombre="Indicadores" /> : <SinPermiso />;
     default:

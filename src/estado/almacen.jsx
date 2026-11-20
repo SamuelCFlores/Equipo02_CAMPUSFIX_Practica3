@@ -66,8 +66,9 @@ export function ProveedorDatos({ children }) {
       ahora,
       ejecutar,
       flash,
-      avisar: (texto, tipo = 'exito') => setFlash({ texto, tipo, n: Date.now() }),
-      limpiarFlash: () => setFlash(null),
+      /** Mensaje de éxito; con `conservar` sobrevive al siguiente cambio de pantalla. */
+      avisar: (texto, { tipo = 'exito', conservar = false } = {}) => setFlash({ texto, tipo, conservar }),
+      limpiarFlash: () => setFlash((f) => (f?.conservar ? { ...f, conservar: false } : null)),
       entrar: (id) => setEstado((e) => ({ ...e, sesion: id })),
       salir: () => setEstado((e) => ({ ...e, sesion: null })),
       reiniciar: () => {

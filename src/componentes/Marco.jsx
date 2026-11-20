@@ -4,7 +4,7 @@ import { useDatos } from '../estado/almacen.jsx';
 import { ir } from '../estado/rutas.js';
 import { ROLES, iniciales } from '../dominio/accesos.js';
 import { fechaLarga, fechaCorta } from '../dominio/reloj.js';
-import { Logo, Icono } from './ui.jsx';
+import { Logo, Icono, Aviso } from './ui.jsx';
 
 const MENUS = {
   reportante: [
@@ -136,7 +136,7 @@ export function Encabezado() {
 }
 
 export function Marco({ actual, children }) {
-  const { yo, reiniciar } = useDatos();
+  const { yo, reiniciar, flash } = useDatos();
   return (
     <>
       <Encabezado />
@@ -164,6 +164,7 @@ export function Marco({ actual, children }) {
           </div>
         </nav>
         <main className="contenido" id="contenido">
+          {flash && <Aviso tipo={flash.tipo} titulo={flash.texto} className="no-imprimir" />}
           {children}
           <footer className="pie">
             <span>CAMPUSFIX · Servicio de infraestructura</span>
