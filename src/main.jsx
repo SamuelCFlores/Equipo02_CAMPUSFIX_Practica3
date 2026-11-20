@@ -1,12 +1,13 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-
-function App() {
-  return <main style={{ fontFamily: 'Public Sans, sans-serif', padding: 32 }}>CAMPUSFIX · prototipo en construcción</main>;
-}
+import { ProveedorDatos } from './estado/almacen.jsx';
+import App from './App.jsx';
+import './estilos/app.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <ProveedorDatos>
+      <App />
+    </ProveedorDatos>
   </StrictMode>,
 );
